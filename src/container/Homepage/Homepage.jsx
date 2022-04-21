@@ -275,8 +275,8 @@ const Homepage = () => {
           </ul>
 
           <div className="filters__sections">
-            {ProjectList()}
-            {SkillList()}
+            <ProjectList />
+            <SkillList />
           </div>
         </section>
       </main>

@@ -1,3 +1,4 @@
 import Footer from './Footer';
+import DarkMode from './DarkMode';
 
-export { Footer };
+export { Footer, DarkMode };
