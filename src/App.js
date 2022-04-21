@@ -5,8 +5,7 @@ import Dummy from './container/Homepage/Dummy';
 function App() {
   return (
     <div className="App">
-      {/* <Homepage /> */}
-      <Dummy />
+      <Homepage />
     </div>
   );
 }

@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { images, data } from '../../constants';
-import { Footer } from '../../components';
+import { DarkMode, Footer } from '../../components';
 
-const Homepage = () => {
+const Dummy = () => {
   const [activeTab, setTab] = useState(1);
 
   const toggleTab = (index) => {
     setTab(index);
   };
 
-  const ProfilePicture = () => {
+  const ProfileHeader = () => {
     return (
       <header className="profile container">
-        <i className="ri-moon-line change-theme" id="theme-button"></i>
+        <DarkMode />
 
         <div className="profile__container grid">
           <div className="profile__data">
             <div className="profile__border">
               <div className="profile__perfil">
-                <img src={images.profile_img} alt={images.profile_img} />
+                <img src={images.profile_img} alt="" />
               </div>
             </div>
 
@@ -99,162 +99,11 @@ const Homepage = () => {
     );
   };
 
-  const ProjectList = () => {
-    return (
-      // Project List
-      <div
-        className={`projects__content grid ${
-          activeTab === 1 ? 'filters__active' : 'filters__nonactive'
-        }`}
-      >
-        {data.works.map((item) => {
-          return (
-            <article className="projects__card" key={item.id}>
-              {/* <!-- Insert your image in a rectangular format (Ex: 600 x 400, 1000 x 800, 1200 x 1000, etc) --> */}
-              <img src={item.image} alt="" className="projects__img" />
-
-              <div className="projects__modal">
-                <div>
-                  <span className="projects__subtitle">{item.projectType}</span>
-                  <h3 className="projects__title">{item.projectName}</h3>
-                  <a
-                    href={item.linkUrl}
-                    className="projects__button button button__small"
-                    target="_blank"
-                  >
-                    <i className="ri-link"></i>
-                  </a>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const SkillList = () => {
-    return (
-      // Skill List
-      <div
-        className={`skills__content grid ${
-          activeTab === 2 ? 'filters__active' : 'filters__nonactive'
-        }`}
-      >
-        <div className="skills__area">
-          <h3 className="skills__title">Frontend Developer</h3>
-          <div className="skills__box">
-            <div className="skills__group">
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">HTML</h3>
-                  <span className="skills__level">Basic</span>
-                </div>
-              </div>
-
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">CSS</h3>
-                  <span className="skills__level">Advanced</span>
-                </div>
-              </div>
-
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">JavaScript</h3>
-                  <span className="skills__level">Intermediate</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="skills__group">
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">React</h3>
-                  <span className="skills__level">Intermediate</span>
-                </div>
-              </div>
-
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">Bootstrap</h3>
-                  <span className="skills__level">Intermediate</span>
-                </div>
-              </div>
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-
-                <div>
-                  <h3 className="skills__name">Git</h3>
-                  <span className="skills__level">Intermediate</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="skills__area">
-          <h3 className="skills__title">Backend Developer</h3>
-          <div className="skills__box">
-            <div className="skills__group">
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">PHP</h3>
-                  <span className="skills__level">Intermediate</span>
-                </div>
-              </div>
-
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">MySQL</h3>
-                  <span className="skills__level">Advance</span>
-                </div>
-              </div>
-
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">Firebase</h3>
-                  <span className="skills__level">Intermediate</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="skills__group">
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">Python</h3>
-                  <span className="skills__level">Basic</span>
-                </div>
-              </div>
-
-              <div className="skills__data">
-                <i className="ri-checkbox-circle-line"></i>
-                <div>
-                  <h3 className="skills__name">Node Js</h3>
-                  <span className="skills__level">Intermediate</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const ItemContent = () => {
-    return (
+  return (
+    <>
+      <ProfileHeader />
       <main className="main">
-        <section className="container">
-          {/* <!--=============== FILTERS TABS ===============--> */}
+        <section className="filters container">
           <ul className="filters__content">
             <button
               className={`filters__button ${
@@ -275,21 +124,170 @@ const Homepage = () => {
           </ul>
 
           <div className="filters__sections">
-            <ProjectList />
-            <SkillList />
+            <div
+              className={`projects__content grid ${
+                activeTab === 1 ? 'filters__active' : 'filters__nonactive'
+              }`}
+              id="projects"
+            >
+              {data.works.map((item) => {
+                return (
+                  <article className="projects__card" key={item.id}>
+                    {/* <!-- Insert your image in a rectangular format (Ex: 600 x 400, 1000 x 800, 1200 x 1000, etc) --> */}
+                    <img src={item.image} alt="" className="projects__img" />
+
+                    <div className="projects__modal">
+                      <div>
+                        <span className="projects__subtitle">
+                          {item.projectType}
+                        </span>
+                        <h3 className="projects__title">{item.projectName}</h3>
+                        <a
+                          href={item.linkUrl}
+                          className="projects__button button button__small"
+                          target="_blank"
+                        >
+                          <i className="ri-link"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            <div
+              className={`skills__content grid ${
+                activeTab === 2 ? 'filters__active' : 'filters__nonactive'
+              }`}
+              id="skills"
+            >
+              <div className="skills__area">
+                <h3 className="skills__title">Frontend Developer</h3>
+
+                <div className="skills__box">
+                  <div className="skills__group">
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">HTML</h3>
+                        <span className="skills__level">Basic</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">CSS</h3>
+                        <span className="skills__level">Advanced</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">JavaScript</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="skills__group">
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">React</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">Bootstrap</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">Git</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="skills__area">
+                <h3 className="skills__title">Backend Developer</h3>
+
+                <div className="skills__box">
+                  <div className="skills__group">
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">PHP</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">MySQL</h3>
+                        <span className="skills__level">Advance</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">Firebase</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="skills__group">
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">Python</h3>
+                        <span className="skills__level">Basic</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">Node Js</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
-    );
-  };
 
-  return (
-    <>
-      <ProfilePicture />
-      <ItemContent />
       <Footer />
     </>
   );
 };
 
-export default Homepage;
+export default Dummy;
