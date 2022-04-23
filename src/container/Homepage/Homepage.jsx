@@ -52,13 +52,13 @@ const Dummy = () => {
 
           <div className="profile__info grid">
             <div className="profile__info-group">
-              <h3 className="profile__info-number">7</h3>
+              <h3 className="profile__info-number">2</h3>
               <p className="profile__info-description">
                 Years of <br /> work
               </p>
             </div>
             <div className="profile__info-group">
-              <h3 className="profile__info-number">+124</h3>
+              <h3 className="profile__info-number">+10</h3>
               <p className="profile__info-description">
                 Completed <br /> projects
               </p>
@@ -86,7 +86,7 @@ const Dummy = () => {
               </a>
 
               <a
-                href="https://m.me/bedimcode"
+                href="https://www.github.com"
                 target="_blank"
                 className="button button__small button__gray"
               >

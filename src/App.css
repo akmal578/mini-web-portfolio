@@ -1,3 +1,11 @@
+/* Gradient text */
+.gradient__text {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /*=============== PROFILE ===============*/
 .profile {
   position: relative;
