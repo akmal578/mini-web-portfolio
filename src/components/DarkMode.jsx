@@ -1,7 +1,6 @@
 import React from 'react';
 
 const DarkMode = () => {
-  let clickedClass = 'clicked';
   const body = document.body;
   const lightTheme = 'light';
   const darkTheme = 'dark-theme';
@@ -20,7 +19,7 @@ const DarkMode = () => {
     body.classList.add(lightTheme);
   }
 
-  const switchTheme = (e) => {
+  const switchTheme = () => {
     if (theme === darkTheme) {
       body.classList.replace(darkTheme, lightTheme);
       //   e.target.classList.remove(clickedClass);

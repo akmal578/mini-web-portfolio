@@ -1,31 +1,55 @@
 import React, { useState } from 'react';
 import { images, data } from '../../constants';
 import { DarkMode, Footer } from '../../components';
+import { motion } from 'framer-motion';
 
-const Dummy = () => {
+const Homepage = () => {
+  const [filterTab, setFilterTab] = useState(1);
   const [activeTab, setTab] = useState(1);
+  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
-  const toggleTab = (index) => {
-    setTab(index);
+  const toggleTab = (item) => {
+    setFilterTab(item);
+    setAnimateCard([{ y: 100, opacity: 0 }]);
+
+    setTimeout(() => {
+      setAnimateCard([{ y: 0, opacity: 1 }]);
+      setTab(item);
+    }, 500);
   };
 
-  const ProfileHeader = () => {
-    return (
+  return (
+    <>
       <header className="profile container">
         <DarkMode />
 
         <div className="profile__container grid">
           <div className="profile__data">
-            <div className="profile__border">
+            <motion.div
+              whileInView={{ scale: [0, 1] }}
+              transition={{ duration: 1, ease: 'easeInOut' }}
+              viewport={{ once: true }}
+              className="profile__border"
+            >
               <div className="profile__perfil">
-                <img src={images.profile_img} alt="" />
+                <img src={images.profile_img} alt="profileimage" />
               </div>
-            </div>
+            </motion.div>
+            <motion.div
+              whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="profile__name">Akmal Adnan</h2>
+              <h3 className="profile__profession">Developer</h3>
+            </motion.div>
 
-            <h2 className="profile__name">Akmal Adnan</h2>
-            <h3 className="profile__profession">Developer</h3>
-
-            <ul className="profile__social">
+            <motion.ul
+              whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="profile__social"
+            >
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
@@ -47,10 +71,15 @@ const Dummy = () => {
               >
                 <i className="ri-github-line"></i>
               </a>
-            </ul>
+            </motion.ul>
           </div>
 
-          <div className="profile__info grid">
+          <motion.div
+            whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+            transition={{ duration: 1, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="profile__info grid"
+          >
             <div className="profile__info-group">
               <h3 className="profile__info-number">2</h3>
               <p className="profile__info-description">
@@ -69,16 +98,21 @@ const Dummy = () => {
                 Satisfied <br /> customers
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="profile__buttons">
+          <motion.div
+            whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+            transition={{ duration: 1, delay: 1.1 }}
+            viewport={{ once: true }}
+            className="profile__buttons"
+          >
             <a download="" href="assets/pdf/Gianell-Cv.pdf" className="button">
               Download CV <i className="ri-download-line"></i>
             </a>
 
             <div className="profile__buttons-small">
               <a
-                href="https://api.whatsapp.com/send?phone=51123456789&text=Hello, more information!"
+                href="https://www.github.com"
                 target="_blank"
                 className="button button__small button__gray"
               >
@@ -93,21 +127,20 @@ const Dummy = () => {
                 <i className="ri-messenger-line"></i>
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </header>
-    );
-  };
-
-  return (
-    <>
-      <ProfileHeader />
       <main className="main">
-        <section className="filters container">
+        <motion.section
+          whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+          transition={{ duration: 1, delay: 1.4 }}
+          viewport={{ once: true }}
+          className="filters container"
+        >
           <ul className="filters__content">
             <button
               className={`filters__button ${
-                activeTab === 1 && 'filter-tab-active'
+                filterTab === 1 && 'filter-tab-active'
               }`}
               onClick={() => toggleTab(1)}
             >
@@ -115,7 +148,7 @@ const Dummy = () => {
             </button>
             <button
               className={`filters__button ${
-                activeTab === 2 && 'filter-tab-active'
+                filterTab === 2 && 'filter-tab-active'
               }`}
               onClick={() => toggleTab(2)}
             >
@@ -124,7 +157,9 @@ const Dummy = () => {
           </ul>
 
           <div className="filters__sections">
-            <div
+            <motion.div
+              animate={animateCard}
+              transition={{ duration: 0.5, delayChildren: 0.5 }}
               className={`projects__content grid ${
                 activeTab === 1 ? 'filters__active' : 'filters__nonactive'
               }`}
@@ -154,9 +189,11 @@ const Dummy = () => {
                   </article>
                 );
               })}
-            </div>
+            </motion.div>
 
-            <div
+            <motion.div
+              animate={animateCard}
+              transition={{ duration: 0.5, delayChildren: 0.5 }}
               className={`skills__content grid ${
                 activeTab === 2 ? 'filters__active' : 'filters__nonactive'
               }`}
@@ -280,9 +317,9 @@ const Dummy = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <Footer />
@@ -290,4 +327,4 @@ const Dummy = () => {
   );
 };
 
-export default Dummy;
+export default Homepage;
